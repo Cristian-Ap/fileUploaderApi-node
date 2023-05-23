@@ -4,7 +4,9 @@ const extensions_allowed = require('../models/str-freeze/file-extension');
 const uploadFile = (req = request, res = response) => {
     try {
         if (!req.files || Object.keys(req.files).length === 0) {
-            return res.status(400).send('No files were uploaded.');
+            return res.status(400).josn({
+                message: "file is required"
+            });
         }
     
         const file = req.files.image;
